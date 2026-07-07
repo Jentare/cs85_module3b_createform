@@ -12,7 +12,25 @@
         $message = htmlspecialchars(trim($_POST['message']));
 
         //validate inputs
-        
+        $errors = [];
+
+        if(empty($name)) {
+            $errors[] = "Name is required.";
+        }
+
+        if(!filter_var($email, FILTER_SANITIZE_EMAIL)) {
+            $errors[] = "A valid email address is required.";
+        }
+
+        if(empty($message)) {
+            $errors[] = "Message cannot be empty.";
+        }
+
+        //thank you message
+        if(empty($errors)) {
+            echo "<h2>Thank you, " . $name . "! Your message has been sent.</h2>";
+        exit;
+        }
     }
 ?>
 
