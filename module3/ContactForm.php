@@ -3,6 +3,7 @@
 //Module3 Assignment 3B
 // GitHub Repo URL: https://github.com/Jentare/cs85-module3b-createform
 
+//PHP submission handling logic
 <?php
     //detect submission
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,6 +34,7 @@ If any of the fields are left blank, the page will display error messages.
         <title>Mod 3B Contact Form</title>
     </head>
     <body>
+        //Initial form HTML structure
         <form action="ContactForm.php" method="POST">
             <label for="FullName">Full Name:</label><br>
             <input type="text" id="FullName" name="name" required><br><br>
