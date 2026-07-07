@@ -9,6 +9,7 @@
         //santize inputs
         $name = htmlspecialchars(trim($_POST['name']));
         $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+        $topic = htmlspecialchars(trim($_POST['topic']));
         $message = htmlspecialchars(trim($_POST['message']));
 
         //validate inputs
@@ -18,8 +19,12 @@
             $errors[] = "Name is required.";
         }
 
-        if(!filter_var($email, FILTER_SANITIZE_EMAIL)) {
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "A valid email address is required.";
+        }
+
+        if(empty($topic)) {
+            $errors[] = "Topic is required.";
         }
 
         if(empty($message)) {
@@ -41,18 +46,18 @@
         <title>Mod 3B Contact Form</title>
     </head>
     <body>
-        <form action="" method="POST">
+        <form action="ContactForm.php" method="POST">
             <label for="FullName">Full Name:</label><br>
-            <input type="text" id="FullName" name="FullName" required><br><br>
+            <input type="text" id="FullName" name="name" required><br><br>
             
             <label for="Email">Email Address:</label><br>
-            <input type="email" id="Email" name="Email" required><br><br>
+            <input type="email" id="Email" name="email" required><br><br>
             
             <label for="Topic">Topic:</label><br>
-            <input type="text" id="Topic" name="Topic" required><br><br>
+            <input type="text" id="Topic" name="topic" required><br><br>
             
             <label for="Message">Message:</label><br>
-            <input type="text" id="Message" name="Message" required><br><br>
+            <input type="text" id="Message" name="message" required><br><br>
             
             <input type="submit" name="submit" value="Submit Message"><br><br>
     </form>
