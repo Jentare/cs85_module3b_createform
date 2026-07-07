@@ -15,29 +15,16 @@
         //validate inputs
         $errors = [];
 
-        if(empty($name)) {
-            $errors[] = "Name is required.";
-        }
-
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "A valid email address is required.";
-        }
-
-        if(empty($topic)) {
-            $errors[] = "Topic is required.";
-        }
-
-        if(empty($message)) {
-            $errors[] = "Message cannot be empty.";
-        }
-
-        //thank you message
-        if(empty($errors)) {
-            echo "<h2>Thank you, " . $name . "! Your message has been sent.</h2>";
-        exit;
+        if(!empty($name) &&!empty($email) && !empty($topic) && !empty($message)) {
+            echo "<h2>Thank you, " . $name . "! We received your message about: \"$topic\"</h2>";
         }
     }
 ?>
+
+/*output predictions
+I predict if the fields are filled out correctly, the message "Thank you, [Name]! Your message has been sent." will be displayed.
+If any of the fields are left blank, the page will display error messages.
+*/
 
 <!DOCTYPE html>
 <html lang="en">
